@@ -10,7 +10,9 @@ export default function Episodes(props) {
             <img className="episode-image" src={e.image.medium} alt={e.name} />
           )}
           <div className="episode-info">
-            <p className="episode-number">
+            <p
+              data-testId="episode-title"
+              className="episode-number">
               Season {e.season}, Episode {e.number}
             </p>
             <h3>{e.name}</h3>
