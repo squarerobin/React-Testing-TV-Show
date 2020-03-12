@@ -11,7 +11,7 @@ export default function Episodes(props) {
           )}
           <div className="episode-info">
             <p
-              data-testId="episode-title"
+              data-testid="episode-title"
               className="episode-number">
               Season {e.season}, Episode {e.number}
             </p>

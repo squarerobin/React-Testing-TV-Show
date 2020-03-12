@@ -9,7 +9,7 @@ import { data } from '../mockData'
 import { act } from 'react-dom/test-utils'
 
 
-jest.mock('../api/episodesService.js')
+jest.mock('../api/episodesService')
 
 test('renders the app ', () => {
     act(() => {
@@ -23,12 +23,12 @@ test('renders the app ', () => {
 test('correct episodes populate when you select a season', async () => {
  
 
-    act(() => {
-        mockFetchEpisodes.mockResolvedValueOnce(data)
+   
+    mockFetchEpisodes.mockResolvedValueOnce(data)
 
 
 
-    })
+   
     const {getByTestId, getByText} = render(<App />)
     await wait( () => {getByText(/Select a season/i)} )
     const dropDown = getByText(/Select a season/i)
@@ -36,6 +36,7 @@ test('correct episodes populate when you select a season', async () => {
    // fireEvent.change(dropDown, {value: "Season 1"})
     const text = getByText(/Season 1/i)
     expect(text).toBeInTheDocument()
-
+    userEvent.click(text)
+    getByText(/Season 1, Episode 1/i)
 })
 
